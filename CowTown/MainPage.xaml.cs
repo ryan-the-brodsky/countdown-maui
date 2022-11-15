@@ -3,29 +3,34 @@
 public partial class MainPage : ContentPage
 {
 	int count = 0;
+	string currentWord = "";
 
 	public MainPage()
 	{
 		InitializeComponent();
-		Button letterButton = new Button
+
+		for(int i = 0; i < 8; i++)
 		{
-			Text = "A",
-			FontSize = 24
-		};
-		LettersGrid.Children.Add(letterButton);
+			Button letterButton = new Button();
+			letterButton.Text = "A";
+			letterButton.FontSize = 24;
+            letterButton.Clicked += OnEligibleLetterClicked;
+            EligibleLettersGrid.Children.Add(letterButton);
+        }
 
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	private void OnEligibleLetterClicked(object sender, EventArgs e)
 	{
-		count++;
+		Button clickedButton = (Button)sender;
+		EligibleLettersGrid.Children.Remove(clickedButton);
+		ChosenLettersGrid.Children.Add(clickedButton);
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+		Console.WriteLine(clickedButton.Text);
+	}
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
+	private void OnSubmitWordClicked(object sender, EventArgs e)
+	{
 	}
 }
 
