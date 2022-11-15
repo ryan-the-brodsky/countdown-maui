@@ -4,22 +4,15 @@
              x:Class="CowTown.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
+        <StackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
+            >
 
             <Label
                 Text="Letter Challenge"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
                 HorizontalOptions="Center" />
 
             <Button
@@ -28,13 +21,14 @@
                 SemanticProperties.Hint="Adds your current word to your submissions"
                 HorizontalOptions="Center" />
            <HorizontalStackLayout
-                x:Name="ChosenLettersGrid">
+                x:Name="ChosenLettersGrid"
+               HorizontalOptions="Center">
             </HorizontalStackLayout>
             <HorizontalStackLayout
                 x:Name="EligibleLettersGrid"
-            >
+                >
             </HorizontalStackLayout>
-        </VerticalStackLayout>
+         </StackLayout>
     </ScrollView>
 
 </ContentPage>
