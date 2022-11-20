@@ -49,8 +49,21 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\" />
+	  <None Remove="View\" />
+	  <None Remove="ViewModel\" />
+	  <None Remove="CommunityToolkit.Mvvm" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Images\" />
+	  <Folder Include="View\" />
+	  <Folder Include="ViewModel\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="View\LettersGame.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	</ItemGroup>
 </Project>

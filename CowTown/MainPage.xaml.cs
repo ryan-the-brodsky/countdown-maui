@@ -8,11 +8,12 @@ public partial class MainPage : ContentPage
     List<char> lettersGiven = new List<char>();
     List<string> wordsSubmitted = new List<string>();
 
-	public MainPage()
+	public MainPage(MainPageViewModel viewModel)
 	{
 		InitializeComponent();
         lettersGiven = CowTown.LetterUtils.GiveSevenLetters();
         GenerateLetters();
+        BindingContext = viewModel;
     }
 
 	private void GenerateLetters()
