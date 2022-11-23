@@ -7,18 +7,23 @@
              Title="LettersGame">
     <VerticalStackLayout>
         <Grid
-            ColumnDefinitions="*,*,*,*,*,*,*"
+            ColumnDefinitions="*,*,*,*"
             ColumnSpacing="5"
             RowDefinitions="*, Auto"
             RowSpacing="5">
             <CollectionView
+                WidthRequest="100"
                 ItemsSource="{Binding EligibleLetters}">
-
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-
                         <Button
-                        Text="{Binding .}"
+                            Padding="10"
+                            HeightRequest="75"
+                            WidthRequest="75"
+                            Text="{Binding .}"
+                            Command="{Binding EligibleLetterClickCommand}"
+                            CommandParameter="{Binding .}"
                         />
                     </DataTemplate>
 

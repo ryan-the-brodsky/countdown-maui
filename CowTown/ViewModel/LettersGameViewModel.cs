@@ -1,4 +1,5 @@
 ﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 namespace CowTown.ViewModel
 {
 	public partial class LettersGameViewModel : BaseViewModel
@@ -8,12 +9,21 @@ namespace CowTown.ViewModel
 
         public LettersGameViewModel()
 		{
-			List<char> startingLetters = LetterUtils.GiveSevenLetters();
+            List<char> startingLetters = LetterUtils.GiveSevenLetters();
 			foreach (char letter in startingLetters)
 			{
 				EligibleLetters.Add(letter);
 			}
         }
-	}
+
+		[RelayCommand]
+		async Task EligibleLetterClick(char letter)
+		{
+                Console.WriteLine("HELLO");
+                EligibleLetters.Remove((char)letter);
+                EligibleLetters.Clear();
+        }
+		
+    }
 }
 
