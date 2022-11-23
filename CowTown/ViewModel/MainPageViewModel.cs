@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CowTown.ViewModel
 {
-    public partial class MainPageViewModel
+    public partial class MainPageViewModel : BaseViewModel
     {
         public MainPageViewModel()
         {
@@ -10,6 +10,7 @@ namespace CowTown.ViewModel
         [RelayCommand]
         async Task GoToLettersGame()
         {
+            Console.Write("HERE");
             await Shell.Current.GoToAsync(nameof(LettersGame), true);
         }
 

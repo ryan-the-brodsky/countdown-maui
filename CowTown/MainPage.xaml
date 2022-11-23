@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CowTown.MainPage"
-             xmlns:viewmodel="clr-namespace:CowTown.ViewModel">
+             xmlns:viewmodel="clr-namespace:CowTown.ViewModel"
+             x:DataType="viewmodel:MainPageViewModel"
+             >
 
     <ScrollView>
         <StackLayout
@@ -16,7 +18,7 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Button Command="{Binding GoToLettersGame}"
+            <Button Command="{Binding Path=GoToLettersGameCommand}"
                     Text="Go To LettersGame"/>
 
             <HorizontalStackLayout
