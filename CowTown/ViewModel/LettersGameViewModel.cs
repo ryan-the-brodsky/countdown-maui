@@ -17,11 +17,10 @@ namespace CowTown.ViewModel
         }
 
 		[RelayCommand]
-		async Task EligibleLetterClick(char letter)
+		private void EligibleLetterClick(char letter)
 		{
                 Console.WriteLine("HELLO");
                 EligibleLetters.Remove((char)letter);
-                EligibleLetters.Clear();
         }
 		
     }
