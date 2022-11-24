@@ -6,14 +6,40 @@
              x:DataType="viewmodel:LettersGameViewModel"
              Title="LettersGame">
     <VerticalStackLayout>
+        <Grid>
+            <CollectionView
+                ItemsSource="{Binding ChosenLetters}"
+                WidthRequest="200"
+                HeightRequest="250"
+
+            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            Padding="10"
+                            MinimumHeightRequest="25"
+                            HeightRequest="25"
+                            WidthRequest="25"
+                            Text="{Binding .}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LettersGameViewModel}}, Path=ChosenLetterClickCommand}"
+                            CommandParameter="{Binding .}"
+                        />
+                    </DataTemplate>
+
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </Grid>
         <Grid
             ColumnDefinitions="*,*,*,*"
             ColumnSpacing="5"
             RowDefinitions="*, Auto"
             RowSpacing="5">
             <CollectionView
-                WidthRequest="100"
-                ItemsSource="{Binding EligibleLetters}">
+                ItemsSource="{Binding EligibleLetters}"
+                WidthRequest="200">
                 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -32,5 +58,6 @@
             </CollectionView>
 
         </Grid>
+        
     </VerticalStackLayout>
 </ContentPage>

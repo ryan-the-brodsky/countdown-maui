@@ -6,6 +6,7 @@ namespace CowTown.ViewModel
 	{
 		public ObservableCollection<char> EligibleLetters { get; } = new();
 		public ObservableCollection<char> ChosenLetters { get; } = new();
+		public string currentWord = "";
 
         public LettersGameViewModel()
 		{
@@ -19,8 +20,31 @@ namespace CowTown.ViewModel
 		[RelayCommand]
 		private void EligibleLetterClick(char letter)
 		{
-                Console.WriteLine("HELLO");
-                EligibleLetters.Remove((char)letter);
+			EligibleLetters.Remove((char)letter);
+			ChosenLetters.Add((char)letter);
+			currentWord += letter;
+			Console.WriteLine(currentWord);
+        }
+
+		[RelayCommand]
+		private void ChosenLetterClick(char letter)
+		{
+			ChosenLetters.Remove((char)letter);
+			EligibleLetters.Add((char)letter);
+            string newWord = "";
+            bool letterSeen = false;
+            foreach (char c in currentWord)
+            {
+                if (c != letter || letterSeen)
+                {
+                    newWord += c;
+                }
+                else
+                {
+                    letterSeen = true;
+                }
+            }
+            currentWord = newWord;
         }
 		
     }
