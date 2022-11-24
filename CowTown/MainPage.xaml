@@ -20,25 +20,6 @@
 
             <Button Command="{Binding Path=GoToLettersGameCommand}"
                     Text="Go To LettersGame"/>
-
-            <HorizontalStackLayout
-                x:Name="ChosenLettersGrid"
-               HorizontalOptions="Center"
-                HeightRequest="50"
-                >
-            </HorizontalStackLayout>
-
-            <Button
-                x:Name="SubmitWordBtn"
-                Text="Submit Word"
-                Clicked="OnSubmitWordClicked"
-                SemanticProperties.Hint="Adds your current word to your submissions"
-                HorizontalOptions="Center" />
-
-            <HorizontalStackLayout
-                x:Name="EligibleLettersGrid"
-                >
-            </HorizontalStackLayout>
          </StackLayout>
     </ScrollView>
 

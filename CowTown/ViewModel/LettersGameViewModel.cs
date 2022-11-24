@@ -6,13 +6,15 @@ namespace CowTown.ViewModel
 	{
 		public ObservableCollection<char> EligibleLetters { get; } = new();
 		public ObservableCollection<char> ChosenLetters { get; } = new();
-		public string currentWord = "";
+		public string CurrentWord = "";
+		public List<string> SubmittedWords { get; } = new();
 
         public LettersGameViewModel()
 		{
-            List<char> startingLetters = LetterUtils.GiveSevenLetters();
-			foreach (char letter in startingLetters)
+            List<char> StartingLetters = LetterUtils.GiveSevenLetters();
+			foreach (char letter in StartingLetters)
 			{
+				Console.WriteLine(letter);
 				EligibleLetters.Add(letter);
 			}
         }
@@ -22,8 +24,7 @@ namespace CowTown.ViewModel
 		{
 			EligibleLetters.Remove((char)letter);
 			ChosenLetters.Add((char)letter);
-			currentWord += letter;
-			Console.WriteLine(currentWord);
+			CurrentWord += letter;
         }
 
 		[RelayCommand]
@@ -31,22 +32,33 @@ namespace CowTown.ViewModel
 		{
 			ChosenLetters.Remove((char)letter);
 			EligibleLetters.Add((char)letter);
-            string newWord = "";
+            string NewWord = "";
             bool letterSeen = false;
-            foreach (char c in currentWord)
+            foreach (char c in CurrentWord)
             {
                 if (c != letter || letterSeen)
                 {
-                    newWord += c;
+                    NewWord += c;
                 }
                 else
                 {
                     letterSeen = true;
                 }
             }
-            currentWord = newWord;
+            CurrentWord = NewWord;
         }
-		
+
+		[RelayCommand]
+		private void SubmitWord()
+		{
+			SubmittedWords.Add(CurrentWord);
+			CurrentWord = "";
+			foreach(char c in ChosenLetters)
+			{
+				EligibleLetters.Add(c);
+			}
+			ChosenLetters.Clear();
+		}
     }
 }
 
